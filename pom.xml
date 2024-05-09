@@ -14,9 +14,10 @@
 	<name>customer.register.microservice</name>
 	<description>Customer registration service.</description>
 	<properties>
-		<java.version>21</java.version>
-		  <sonar.organization>diaristando-a</sonar.organization>
-  		  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<java.version>21</java.version><properties>
+		  <sonar.organization>diaristando</sonar.organization>
+		  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+	</properties>
 	</properties>
 	<dependencies>
 		<dependency>
