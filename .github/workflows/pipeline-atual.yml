@@ -57,4 +57,4 @@ jobs:
           context: .
           dockerfile: Dockerfile
           push: true
-          tags: diaristandoadmin/code-base:latest, diaristandoadmin/code-base:0.0.1-SNAPSHOT
+          tags: diaristandoadmin/code-base:latest, diaristandoadmin/code-base:0.0.2-SNAPSHOT
