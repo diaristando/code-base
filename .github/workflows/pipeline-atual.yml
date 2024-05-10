@@ -7,7 +7,6 @@ on:
 
 jobs:
   build-publish-analysis:
-    env:
     name: Construir e publicar no DockerHub
     runs-on: ubuntu-latest
     steps:
