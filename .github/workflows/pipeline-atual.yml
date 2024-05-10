@@ -7,6 +7,8 @@ on:
 
 jobs:
   build-publish-analysis:
+    env:
+      version: 0.0.0
     name: Construir e publicar no DockerHub
     runs-on: ubuntu-latest
     steps:
@@ -37,7 +39,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           mvn clean install org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=diaristando_code-base
-          VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version -q -DforceStdout)
+          $version=$(mvn org.apache.maven.plugins:maven-help-plugin:3.1.0:evaluate -Dexpression=project.version -q -DforceStdout)
       - name: Montando Imagem Docker
         uses: docker/build-push-action@v4
         with:
@@ -58,4 +60,4 @@ jobs:
           context: .
           dockerfile: Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/code-base:latest, ${{ secrets.DOCKERHUB_USERNAME }}/code-base:${{ VERSION }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/code-base:latest, ${{ secrets.DOCKERHUB_USERNAME }}/code-base:$version
