@@ -43,7 +43,12 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: name/app
+          images: diaristandoadmin/code-base
+          tags: |
+            # minimal
+            type=semver,pattern={{version}}
+            # use custom value instead of git tag
+            type=semver,pattern={{version}},value=v1.0.0
       - name: Login em DockerHub
         uses: docker/login-action@v1
         with:
@@ -56,5 +61,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
 
 
